@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffc0cb, #ffb6c1);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: bgFade 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgFade {
+      from { background: linear-gradient(to right, #ffc0cb, #ffb6c1); }
+      to { background: linear-gradient(to right, #ff69b4, #ff1493); }
+    }
+
+    .love-note {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      max-width: 500px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #fff0f5;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #fffaf0;
+    }
+
+    .heart {
+      font-size: 2.5rem;
+      margin-top: 1rem;
+      animation: beat 1s infinite alternate;
+    }
+
+    @keyframes beat {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="love-note">
+    <h1>Hey Babe 💖</h1>
+    <p>I just wanted to say...<br><strong>I love you. More than words, more than stars, more than anything 💫</strong></p>
+    <div class="heart">❤️❤️❤️</div>
+  </div>
+</body>
+</html>
