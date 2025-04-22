@@ -4,56 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I Love You ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #ffc0cb, #ffb6c1);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(-45deg, #ff6ec4, #7873f5, #fbc7d4, #a1c4fd);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      font-family: 'Quicksand', sans-serif;
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
-      animation: bgFade 10s ease-in-out infinite alternate;
     }
 
-    @keyframes bgFade {
-      from { background: linear-gradient(to right, #ffc0cb, #ffb6c1); }
-      to { background: linear-gradient(to right, #ff69b4, #ff1493); }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .love-note {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      max-width: 700px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 3rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
       animation: float 6s ease-in-out infinite;
+      transition: transform 0.3s;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
     h1 {
-      font-size: 3rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
       margin-bottom: 1rem;
       color: #fff0f5;
     }
 
     p {
       font-size: 1.2rem;
-      color: #fffaf0;
+      line-height: 1.8;
+      color: #fffdfd;
       white-space: pre-wrap;
     }
 
     .heart {
-      font-size: 2.5rem;
-      margin-top: 1rem;
+      font-size: 3rem;
+      margin-top: 2rem;
       animation: beat 1s infinite alternate;
+      color: #ff4d88;
+      text-shadow: 0 0 15px #ff85b3;
     }
 
     @keyframes beat {
@@ -67,7 +80,7 @@
     <h1>Hey Babe 💖</h1>
     <p>
 Love is a small word for the storm you’ve stirred in my soul. If I had to explain how much I love you, I’d run out of words before I even began. You are not just someone I care about 
-      you are the calm in my chaos, the fire in my confidence, and the peace in my prayers.
+you are the calm in my chaos, the fire in my confidence, and the peace in my prayers.
 
 I know I often act strong, like I’ve got it all figured out. And in many ways, I do but only because you make me feel like I can conquer the world. Truth is, underneath all that confidence is a heart that’s terrified. Terrified because it’s found something it doesn’t ever want to lose. Something so rare, so precious—it makes the idea of losing it feel unbearable. That something is you, Chedza.
 
@@ -83,3 +96,4 @@ Chedza, my love, my muse, my everything—thank you for being who you are. For m
   </div>
 </body>
 </html>
+
