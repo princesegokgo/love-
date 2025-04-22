@@ -6,63 +6,189 @@
   <title>I Love You ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ffc0cb, #ffb6c1);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      animation: bgFade 10s ease-in-out infinite alternate;
-    }
+  /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #303b46;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
 
-    @keyframes bgFade {
-      from { background: linear-gradient(to right, #ffc0cb, #ffb6c1); }
-      to { background: linear-gradient(to right, #ff69b4, #ff1493); }
-    }
+/* Navigation Bar */
+.navbar {
+    background-color: #303b46;
+}
 
-    .love-note {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      max-width: 500px;
-      animation: float 6s ease-in-out infinite;
-    }
+/* Header */
+header {
+    background-color: #303b46;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.logo {
+    width: 100px;
+    display: block;
+    margin: 0 auto 10px;
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #fff0f5;
-    }
+/* Top Navigation */
+.topnav {
+    overflow: hidden;
+    background-color:  #1a1a1a;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
 
-    p {
-      font-size: 1.5rem;
-      color: #fffaf0;
-    }
+.topnav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
 
-    .heart {
-      font-size: 2.5rem;
-      margin-top: 1rem;
-      animation: beat 1s infinite alternate;
-    }
+.topnav a:hover {
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
 
-    @keyframes beat {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.2); }
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Product Cards */
+.product {
+    background: #303b46;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(13, 13, 13, 0.2);
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product .card-body {
+    background-color: #3d4142;
+    color: white;
+}
+
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    max-width: 850px;
+    margin: auto;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+
+.mySlides img {
+    width: 90%;
+    height: 500px;
+    border-radius: 10px;
+}
+
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Forms */
+.form-label, .form-control {
+    color: black;
+}
+
+/* Order Summary */
+.order-summary p {
+    margin-bottom: 5px;
+}
+
+/* Buttons */
+button, .btn-custom {
+    background: #3d4142;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover, .btn-custom:hover {
+    background-color: #2b2d2e;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .topnav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
     }
+}
   </style>
-</head>
-<body>
+
   <div class="love-note">
     <h1>Hey Babe 💖</h1>
     <p>
