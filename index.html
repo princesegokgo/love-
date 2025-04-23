@@ -6,7 +6,163 @@
   <title>I Love You ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  /* Global Styles */
+  /* Global Styles */ /* Global Styles */
+    body {
+        font-family: 'Quicksand', sans-serif;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        color: white;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @keyframes gradient {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    .heart {
+        font-size: 2.5rem;
+        margin-top: 1rem;
+        animation: beat 1s infinite alternate, float 3s ease-in-out infinite;
+    } 
+
+    @keyframes beat {
+        to { transform: scale(1.2); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .love-note {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        animation: fadeIn 2s ease-in-out, float 6s ease-in-out infinite;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 20px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1.1rem;
+        text-align: justify;
+        animation: slideIn 1.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Floating hearts background */
+    .floating-hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .floating-heart {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 0;
+        animation: floating 10s linear infinite;
+    }
+
+    @keyframes floating {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Button styles */
+    .btn-music {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-music:hover {
+        background: rgba(255, 255, 255, 0.5);
+        transform: scale(1.1);
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+        .love-note {
+            padding: 1.5rem;
+            margin: 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        p {
+            font-size: 1rem;
+        }
+    }
 body {
     font-family: Arial, sans-serif;
     background-color: #303b46;
@@ -410,4 +566,3 @@ Chedza, my love, my everything thank you for being who you are. For making me be
 </body>
 
 </html>
-add ANIMATIONS TO THE WEBSITE
