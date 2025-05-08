@@ -5,564 +5,228 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I Love You ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  /* Global Styles */ /* Global Styles */
+  <style>
     body {
-        font-family: 'Quicksand', sans-serif;
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-        color: white;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     @keyframes gradient {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-    }
-
-    .heart {
-        font-size: 2.5rem;
-        margin-top: 1rem;
-        animation: beat 1s infinite alternate, float 3s ease-in-out infinite;
-    } 
-
-    @keyframes beat {
-        to { transform: scale(1.2); }
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0px); }
-    }
-
-    .love-note {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        max-width: 500px;
-        animation: fadeIn 2s ease-in-out, float 6s ease-in-out infinite;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 20px;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-        font-family: 'Great Vibes', cursive;
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        animation: pulse 2s infinite;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .love-note {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeIn 2s ease-in-out, float 6s ease-in-out infinite;
+      margin: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
 
     p {
-        line-height: 1.6;
-        font-size: 1.1rem;
-        text-align: justify;
-        animation: slideIn 1.5s ease-out;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: justify;
+      animation: slideIn 1.5s ease-out;
     }
 
     @keyframes slideIn {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Floating hearts background */
-    .floating-hearts {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    .floating-heart {
-        position: absolute;
-        font-size: 1.5rem;
-        opacity: 0;
-        animation: floating 10s linear infinite;
-    }
-
-    @keyframes floating {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-        }
-    }
-
-    /* Button styles */
-    .btn-music {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.3);
-        border: none;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 1.5rem;
-        cursor: pointer;
-        backdrop-filter: blur(5px);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .btn-music:hover {
-        background: rgba(255, 255, 255, 0.5);
-        transform: scale(1.1);
-    }
-
-    /* Responsive design */
-    @media (max-width: 600px) {
-        .love-note {
-            padding: 1.5rem;
-            margin: 10px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-        }
-        
-        p {
-            font-size: 1rem;
-        }
-    }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #303b46;
-    color: white;
-    margin: 0;
-    padding: 0;
-}
-.heart {
+    .heart {
       font-size: 2.5rem;
       margin-top: 1rem;
-      animation: beat 1s infinite alternate;
-    } 
-.love-note {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      max-width: 500px;
-      animation: float 6s ease-in-out infinite;
+      animation: beat 1s infinite alternate, float 3s ease-in-out infinite;
+      cursor: pointer;
     }
 
-/* Navigation Bar */
-.navbar {
-    background-color: #303b46;
-}
+    @keyframes beat {
+      to { transform: scale(1.2); }
+    }
 
-/* Header */
-header {
-    background-color: #303b46;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-.logo {
-    width: 100px;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-/* Top Navigation */
-.topnav {
-    overflow: hidden;
-    background-color:  #1a1a1a;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px;
-}
-
-.topnav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    transition: background 0.3s ease;
-}
-  /* Floating hearts background */
     .floating-hearts {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
 
     .floating-heart {
-        position: absolute;
-        font-size: 1.5rem;
-        opacity: 0;
-        animation: floating 10s linear infinite;
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: floating 10s linear infinite;
     }
 
     @keyframes floating {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-        }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Button styles */
     .btn-music {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.3);
-        border: none;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 1.5rem;
-        cursor: pointer;
-        backdrop-filter: blur(5px);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-music:hover {
-        background: rgba(255, 255, 255, 0.5);
-        transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
     }
 
-    /* Responsive design */
     @media (max-width: 600px) {
-        .love-note {
-            padding: 1.5rem;
-            margin: 10px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-        }
-        
-        p {
-            font-size: 1rem;
-        }
+      h1 { font-size: 2.5rem; }
+      p { font-size: 1rem; }
+      .love-note { padding: 1.5rem; margin: 10px; }
     }
-
-.topnav a:hover {
-    background: white;
-    color: black;
-    border-radius: 5px;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #1a1a1a;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-/* Product Cards */
-.product {
-    background: #303b46;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(13, 13, 13, 0.2);
-    transition: transform 0.3s;
-}
-
-.product:hover {
-    transform: scale(1.05);
-}
-
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.product .card-body {
-    background-color: #3d4142;
-    color: white;
-}
-
-/* Slideshow */
-.slideshow-container {
-    position: relative;
-    max-width: 850px;
-    margin: auto;
-}
-
-.slideshow-container img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-.mySlides {
-    display: none;
-    text-align: center;
-}
-
-.mySlides img {
-    width: 90%;
-    height: 500px;
-    border-radius: 10px;
-}
-
-
-.prev:hover, .next:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Product Grid */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Forms */
-.form-label, .form-control {
-    color: black;
-}
-
-/* Order Summary */
-.order-summary p {
-    margin-bottom: 5px;
-}
-
-/* Buttons */
-button, .btn-custom {
-    background: #3d4142;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover, .btn-custom:hover {
-    background-color: #2b2d2e;
-}
-
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #1a1a1a;
-    color: white;
-    margin-top: 20px;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-    color: #f0f0f0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .topnav {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-}
   </style>
+</head>
+<body>
+  <div class="floating-hearts" id="hearts-container"></div>
 
   <div class="love-note">
     <h1>Hey Babe 💖</h1>
     <p>
-Love is a small word to described wht i feel for you . If I had to explain how much I love you, I’d run out of words before I even began. You are not just someone I care about 
-you are the love of my life 
-
-I know I often act strong, like I’ve got it all figured out. And in many ways, I do but only because you make me feel like I can conquer the world. Truth is, underneath all that confidence is a heart that’s terrified. Terrified because it’s found something it doesn’t ever want to lose. Something so rare, so precious—it makes the idea of losing it feel unbearable. That something is you, Chedza.
-
-You are everything I would ever want. The way you smile, the way you speak, the way your eyes light up when you’re passionate about something—it’s all magic. And I can’t help but feel like I stumbled into a dream I never want to wake up from. You’ve become a part of my every thought, my every hope, and every heartbeat.
-
-There’s something about you that calms me, even when the world feels heavy. And yet, at the same time, you set my soul on fire. I imagine a future with you and suddenly everything makes sense—where I’m going, who I’m becoming. It all starts with you. You are my home.
-
-Maybe I’m scared because I’ve never felt this deeply before. Because when you mean everything to someone, the idea of not having you becomes the scariest thing imaginable. But let me promise you this: I will always fight for you. For us. No matter how loud the world gets, I’ll keep choosing you in the silence.
-
-Chedza, my love, my everything thank you for being who you are. For making me believe in love the way I never thought I could. I love you beyond measure and time . And I’ll keep loving you, in this life and every life after.
+      Love is a small word to describe what I feel for you. If I had to explain how much I love you, I’d run out of words before I even began. You are not just someone I care about—you are the love of my life.
+      <br><br>
+      I know I often act strong, like I’ve got it all figured out. And in many ways, I do—but only because you make me feel like I can conquer the world. Truth is, underneath all that confidence is a heart that’s terrified. Terrified because it’s found something it doesn’t ever want to lose. Something so rare, so precious—it makes the idea of losing it feel unbearable. That something is you, Chedza.
+      <br><br>
+      You are everything I would ever want. The way you smile, the way you speak, the way your eyes light up when you’re passionate about something—it’s all magic. And I can’t help but feel like I stumbled into a dream I never want to wake up from. You’ve become a part of my every thought, my every hope, and every heartbeat.
+      <br><br>
+      There’s something about you that calms me, even when the world feels heavy. And yet, at the same time, you set my soul on fire. I imagine a future with you and suddenly everything makes sense—where I’m going, who I’m becoming. It all starts with you. You are my home.
+      <br><br>
+      Maybe I’m scared because I’ve never felt this deeply before. Because when you mean everything to someone, the idea of not having you becomes the scariest thing imaginable. But let me promise you this: I will always fight for you. For us. No matter how loud the world gets, I’ll keep choosing you in the silence.
+      <br><br>
+      Chedza, my love, my everything—thank you for being who you are. For making me believe in love the way I never thought I could. I love you beyond measure and time. And I’ll keep loving you, in this life and every life after.
     </p>
-    <div class="heart">❤️❤️❤️</div>
+    <div class="heart" title="Click me for magic">❤️❤️❤️</div>
   </div>
- <script>
-    // Create floating hearts
+
+  <button class="btn-music" id="musicBtn">🎵</button>
+  <audio id="bgMusic" loop>
+    <source src="your-music-file.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
     function createHearts() {
-        const container = document.getElementById('hearts-container');
-        const heartIcons = ['❤️', '💖', '💗', '💓', '💘', '💝'];
-        
-        for (let i = 0; i < 20; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = 5 + Math.random() * 10 + 's';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(heart);
-        }
+      const container = document.getElementById('hearts-container');
+      const heartIcons = ['❤️', '💖', '💗', '💓', '💘', '💝'];
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 5 + Math.random() * 10 + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(heart);
+      }
     }
 
-    // Music toggle
+    function typeWriter(element, speed) {
+      const text = element.innerHTML;
+      element.innerHTML = '';
+      let i = 0;
+      function typing() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, speed);
+        }
+      }
+      typing();
+    }
+
+    window.onload = function () {
+      createHearts();
+      const paragraphs = document.querySelectorAll('.love-note p');
+      paragraphs.forEach((p, index) => {
+        const originalText = p.innerHTML;
+        p.innerHTML = '';
+        setTimeout(() => typeWriter(p, 20), 1000 * index);
+      });
+    };
+
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
 
     musicBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            musicBtn.innerHTML = '🎵';
-        } else {
-            bgMusic.play();
-            musicBtn.innerHTML = '🔊';
-        }
-        isPlaying = !isPlaying;
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '🎵';
+      } else {
+        bgMusic.play();
+        musicBtn.innerHTML = '🔊';
+      }
+      isPlaying = !isPlaying;
     });
 
-    // Typewriter effect for paragraphs
-    function typeWriter(element, speed) {
-        const text = element.innerHTML;
-        element.innerHTML = '';
-        
-        let i = 0;
-        function typing() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typing, speed);
-            }
-        }
-        typing();
-    }
-
-    // Initialize animations when page loads
-    window.onload = function() {
-        createHearts();
-        
-        // Apply typewriter effect to each paragraph
-        const paragraphs = document.querySelectorAll('.love-note p');
-        paragraphs.forEach((p, index) => {
-            // Store original text
-            const originalText = p.textContent;
-            p.textContent = '';
-            
-            // Start typing after a delay
-            setTimeout(() => {
-                typeWriter(p, 20);
-            }, 1000 * index);
-        });
-    };
-
-    // Add confetti effect when clicking on hearts
     document.querySelector('.heart').addEventListener('click', () => {
-        const heart = document.querySelector('.heart');
-        heart.classList.add('animate__animated', 'animate__rubberBand');
-        
-        setTimeout(() => {
-            heart.classList.remove('animate__animated', 'animate__rubberBand');
-        }, 1000);
-        
-        // Create burst of hearts
-        for (let i = 0; i < 10; i++) {
-            const burstHeart = document.createElement('div');
-            burstHeart.innerHTML = '❤️';
-            burstHeart.style.position = 'absolute';
-            burstHeart.style.fontSize = '2rem';
-            burstHeart.style.left = (heart.offsetLeft + Math.random() * 40 - 20) + 'px';
-            burstHeart.style.top = (heart.offsetTop + Math.random() * 40 - 20) + 'px';
-            burstHeart.style.animation = `fly-${Math.floor(Math.random() * 4) + 1} 1s forwards`;
-            document.body.appendChild(burstHeart);
-            
-            // Remove after animation
-            setTimeout(() => {
-                burstHeart.remove();
-            }, 1000);
-        }
+      alert("Love overflow activated! 💕");
     });
-
-    // Add CSS for burst animations
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes fly-1 {
-            to { transform: translate(-50px, -100px) rotate(-30deg); opacity: 0; }
-        }
-        @keyframes fly-2 {
-            to { transform: translate(50px, -100px) rotate(30deg); opacity: 0; }
-        }
-        @keyframes fly-3 {
-            to { transform: translate(-30px, -120px) rotate(-15deg); opacity: 0; }
-        }
-        @keyframes fly-4 {
-            to { transform: translate(30px, -120px) rotate(15deg); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
-
 </html>
