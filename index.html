@@ -20,6 +20,7 @@
       justify-content: center;
       padding: 2rem;
       overflow-x: hidden;
+      transition: background 0.5s ease;
     }
 
     .love-note {
@@ -33,7 +34,6 @@
       margin-bottom: 3rem;
       border: 2px solid rgba(255, 192, 203, 0.4);
       position: relative;
-      overflow: hidden;
     }
 
     .love-note h1 {
@@ -130,44 +130,53 @@
     }
 
     .animation-message {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-top: 1.5rem;
       animation: fadeIn 1s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .sad-face {
-      font-size: 4rem;
-      animation: shake 0.5s ease infinite;
+    .scare {
+      animation: scaryFlash 1s steps(2, end) infinite;
+      background-color: #2b0000 !important;
+      color: red !important;
+    }
+
+    @keyframes scaryFlash {
+      0% { background-color: #2b0000; }
+      50% { background-color: black; }
+      100% { background-color: #2b0000; }
+    }
+
+    .skull {
+      font-size: 5rem;
       margin-top: 1rem;
+      animation: shake 0.5s ease-in-out infinite;
     }
 
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
     }
 
-    .cute-animation {
-      font-size: 3rem;
-      margin-top: 1.5rem;
-      animation: pop 1s ease forwards;
+    .love-explosion {
+      font-size: 2.5rem;
+      animation: explode 0.7s ease-out forwards;
     }
 
-    @keyframes pop {
+    @keyframes explode {
       0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.5); opacity: 1; }
       100% { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <!-- Floating hearts -->
-  <div class="floating-hearts" id="hearts-container"></div>
-
   <div class="love-note">
     <h1>To the shiniest forehead that brightens up my day every day</h1>
     <p>
@@ -198,47 +207,29 @@
 
   <script>
     function handleNo() {
+      document.body.classList.add('scare');
       const noBtn = document.getElementById('noButton');
       const response = document.getElementById('responseMessage');
 
-      noBtn.remove(); // Remove the "No" button
+      noBtn.remove();
       response.innerHTML = `
         <div class="animation-message">
-          Ouch... That hurt 🥺
-          <div class="sad-face">💔</div>
+          You dare break my heart?! 💔
+          <div class="skull">💀</div>
         </div>
       `;
     }
 
     function handleYes() {
       const response = document.getElementById('responseMessage');
+      document.body.classList.remove('scare');
       response.innerHTML = `
         <div class="animation-message">
-          Awwww! You just made my heart smile!
-          <div class="cute-animation">🥰💞💫</div>
+          Awww! You just made my universe sparkle!
+          <div class="love-explosion">💖💗💞💕💘💝💓</div>
         </div>
       `;
     }
-
-    // Floating hearts
-    function createHearts() {
-      const container = document.getElementById('hearts-container');
-      const heartCount = 20;
-      const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕'];
-      
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = 5 + Math.random() * 10 + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
-        container.appendChild(heart);
-      }
-    }
-
-    window.addEventListener('load', createHearts);
   </script>
 </body>
 </html>
