@@ -20,6 +20,7 @@
       justify-content: center;
       padding: 2rem;
       overflow-x: hidden;
+      transition: background 1s ease;
     }
 
     .love-note {
@@ -32,62 +33,20 @@
       backdrop-filter: blur(12px);
       margin-bottom: 3rem;
       border: 2px solid rgba(255, 192, 203, 0.4);
-      transform: translateY(0);
-      transition: all 0.5s ease;
       position: relative;
-      overflow: hidden;
-    }
-
-    .love-note:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 60px rgba(255, 105, 180, 0.7);
-    }
-
-    .love-note::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      transform: rotate(30deg);
-      transition: all 0.8s ease;
-      opacity: 0;
-    }
-
-    .love-note:hover::before {
-      opacity: 1;
-      animation: shine 3s infinite;
-    }
-
-    @keyframes shine {
-      0% { transform: rotate(30deg) translate(-10%, -10%); }
-      100% { transform: rotate(30deg) translate(10%, 10%); }
     }
 
     .love-note h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
       font-family: 'Great Vibes', cursive;
       color: #fffaf0;
       text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5);
-      position: relative;
-      z-index: 1;
     }
 
     .love-note p {
       font-size: 1.3rem;
       line-height: 1.8;
       margin-bottom: 1.5rem;
-      color: #fff0f5;
-      position: relative;
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-
-    .love-note:hover p {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     .signature {
@@ -96,83 +55,6 @@
       font-size: 1.4rem;
       color: #ffe4e1;
       font-family: 'Dancing Script', cursive;
-      transform: scale(1);
-      transition: all 0.3s ease;
-      position: relative;
-      z-index: 1;
-    }
-
-    .love-note:hover .signature {
-      transform: scale(1.05);
-      text-shadow: 0 0 15px rgba(255, 192, 203, 0.6);
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      width: 90%;
-      max-width: 842px;
-      margin: 2rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      transform: scale(0.98);
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 40px rgba(199, 21, 133, 0.4);
-    }
-
-    .video-container:hover {
-      transform: scale(1);
-      box-shadow: 0 15px 50px rgba(199, 21, 133, 0.7);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .gallery-button {
-      margin: 2rem 0;
-      padding: 0.85rem 2.5rem;
-      background-color: #fff0f5;
-      color: #c71585;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.5);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .gallery-button:hover {
-      background-color: #ffe4e1;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.7);
-    }
-
-    .gallery-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transition: 0.5s;
-    }
-
-    .gallery-button:hover::before {
-      left: 100%;
     }
 
     .heart-beat {
@@ -181,15 +63,51 @@
     }
 
     @keyframes heartbeat {
-      0% { transform: scale(1); }
-      25% { transform: scale(1.1); }
+      0%, 100% { transform: scale(1); }
+      25%, 75% { transform: scale(1.1); }
       50% { transform: scale(1); }
-      75% { transform: scale(1.1); }
-      100% { transform: scale(1); }
     }
 
-    /* Floating hearts decoration */
-    .floating-hearts {
+    .button-container {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .love-btn {
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.5);
+    }
+
+    .yes-btn {
+      background-color: #fff0f5;
+      color: #c71585;
+    }
+
+    .yes-btn:hover {
+      background-color: #ffe4e1;
+      transform: scale(1.05);
+    }
+
+    .no-btn {
+      background-color: #ffcccc;
+      color: #8b0000;
+    }
+
+    .no-btn:hover {
+      background-color: #ff9999;
+      transform: scale(1.05);
+    }
+
+    .floating-hearts, .sad-hearts, .confetti {
       position: fixed;
       top: 0;
       left: 0;
@@ -199,71 +117,58 @@
       z-index: -1;
     }
 
-    .heart {
+    .heart, .sad-heart, .confetti-piece {
       position: absolute;
       opacity: 0;
       font-size: 1.5rem;
+    }
+
+    .heart {
       animation: float 10s linear infinite;
     }
 
+    .sad-heart {
+      animation: sadFloat 4s ease-in-out;
+      color: #660000;
+    }
+
+    .confetti-piece {
+      animation: confettiRain 3s ease-out;
+    }
+
     @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.7;
-      }
-      90% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%, 90% { opacity: 0.7; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
     }
 
-    @media (max-width: 768px) {
-      .love-note {
-        padding: 2rem;
-      }
-      
-      .love-note h1 {
-        font-size: 2.5rem;
-      }
-
-      .love-note p {
-        font-size: 1.1rem;
-      }
-      
-      .signature {
-        font-size: 1.2rem;
-      }
-      
-      .gallery-button {
-        padding: 0.75rem 2rem;
-        font-size: 1.1rem;
-      }
+    @keyframes sadFloat {
+      0% { top: 50%; left: 50%; opacity: 1; transform: scale(1); }
+      100% { top: 10%; left: 10%; opacity: 0; transform: scale(2); }
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 1rem;
-      }
-      
-      .love-note {
-        padding: 1.5rem;
-      }
-      
-      .love-note h1 {
-        font-size: 2rem;
-      }
+    @keyframes confettiRain {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .love-message {
+      font-size: 2rem;
+      color: #fffafa;
+      margin-top: 2rem;
+      animation: popIn 1s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <!-- Floating hearts decoration -->
   <div class="floating-hearts" id="hearts-container"></div>
+  <div class="sad-hearts" id="sad-hearts"></div>
+  <div class="confetti" id="confetti"></div>
 
   <div class="love-note">
     <h1>To the shiniest forehead that brightens up my day every day</h1>
@@ -282,41 +187,60 @@
     <p class="signature">
       Forever yours,<br>— With all my <span class="heart-beat">💖</span>
     </p>
-  </div>
-
-  <a href="gallery.html" class="gallery-button">View Our Gallery <span class="heart-beat">💕</span></a>
-
-  <div class="video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/JmWbBUxSNUU?list=RDJmWbBUxSNUU" 
-      title="Hozier - From Eden" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      allowfullscreen>
-    </iframe>
+    <div class="button-container">
+      <button class="love-btn yes-btn" onclick="loveResponse(true)">Yes 💘</button>
+      <button class="love-btn no-btn" onclick="loveResponse(false)" id="noBtn">No 💔</button>
+    </div>
+    <div id="message" class="love-message"></div>
   </div>
 
   <script>
-    // Create floating hearts
-    function createHearts() {
-      const container = document.getElementById('hearts-container');
-      const heartCount = 20;
-      const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕'];
-      
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = 5 + Math.random() * 10 + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
-        container.appendChild(heart);
+    function loveResponse(isYes) {
+      const noBtn = document.getElementById('noBtn');
+      const message = document.getElementById('message');
+      const hearts = document.getElementById('hearts-container');
+      const sad = document.getElementById('sad-hearts');
+      const confetti = document.getElementById('confetti');
+
+      if (isYes) {
+        // Show happy hearts and confetti
+        message.textContent = "Aww! I love you too! 💖💖💖";
+        for (let i = 0; i < 30; i++) {
+          const piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.top = Math.random() * 20 + 'vh';
+          piece.style.color = ['#ff69b4', '#ff1493', '#ffb6c1'][Math.floor(Math.random() * 3)];
+          piece.textContent = '🎉';
+          confetti.appendChild(piece);
+        }
+
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.textContent = '💞';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+          heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
+          hearts.appendChild(heart);
+        }
+      } else {
+        // Sad animation
+        noBtn.remove();
+        message.textContent = "Ouch... that hurt 💔";
+        document.body.style.background = "#330000";
+
+        for (let i = 0; i < 10; i++) {
+          const sadHeart = document.createElement('div');
+          sadHeart.className = 'sad-heart';
+          sadHeart.textContent = '💔';
+          sadHeart.style.left = 50 + Math.random() * 20 + 'vw';
+          sadHeart.style.top = 50 + Math.random() * 10 + 'vh';
+          sadHeart.style.fontSize = (1 + Math.random()) + 'rem';
+          sad.appendChild(sadHeart);
+        }
       }
     }
-    
-    // Initialize when page loads
-    window.addEventListener('load', createHearts);
   </script>
 </body>
 </html>
