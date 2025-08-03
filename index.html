@@ -205,31 +205,103 @@
 
   <a href="gallery.html" class="gallery-button">View Our Gallery <span class="heart-beat">💕</span></a>
 
-  <script>
-    function handleNo() {
-      document.body.classList.add('scare');
-      const noBtn = document.getElementById('noButton');
-      const response = document.getElementById('responseMessage');
+ <script>
+  function handleNo() {
+    const noBtn = document.getElementById('noButton');
+    const response = document.getElementById('responseMessage');
 
-      noBtn.remove();
-      response.innerHTML = `
-        <div class="animation-message">
-          You dare break my heart?! 💔
-          <div class="skull">💀</div>
-        </div>
-      `;
-    }
+    // Darken the background
+    document.body.style.background = '#2c003e';
 
-    function handleYes() {
-      const response = document.getElementById('responseMessage');
-      document.body.classList.remove('scare');
-      response.innerHTML = `
-        <div class="animation-message">
-          Awww! You just made my universe sparkle!
-          <div class="love-explosion">💖💗💞💕💘💝💓</div>
-        </div>
-      `;
+    // Button disappears
+    noBtn.style.transform = 'scale(0)';
+    noBtn.style.opacity = '0';
+    setTimeout(() => noBtn.remove(), 500);
+
+    // Show custom message
+    response.innerHTML = `
+      <div class="animation-message">
+        wa tsenwa choose another one
+        <div class="sad-face">💔😤</div>
+      </div>
+    `;
+
+    // Make the yes button more eye-catching
+    document.querySelector('.yes-btn').style.transform = 'scale(1.2)';
+    document.querySelector('.yes-btn').style.boxShadow = '0 0 20px rgba(255,105,180,0.8)';
+  }
+
+  function handleYes() {
+    const response = document.getElementById('responseMessage');
+
+    // Show custom thank-you message
+    response.innerHTML = `
+      <div class="animation-message">
+        Thank you Princesss I love you soooo much more 💖
+        <div class="happy-animation">💖🎉✨</div>
+      </div>
+    `;
+
+    // Trigger confetti animation
+    createConfetti();
+
+    // Page celebration animation
+    document.body.style.animation = 'celebrate 0.5s ease';
+    setTimeout(() => document.body.style.animation = '', 500);
+  }
+
+  function createConfetti() {
+    const colors = ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff', '#ff8c00', '#ffd700'];
+
+    for (let i = 0; i < 100; i++) {
+      setTimeout(() => {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = (10 + Math.random() * 15) + 'px';
+        confetti.style.height = (10 + Math.random() * 15) + 'px';
+        confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+        confetti.style.animationDelay = Math.random() * 1 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+      }, i * 30);
     }
-  </script>
+  }
+
+  function createHearts() {
+    const container = document.getElementById('hearts-container');
+    const heartCount = 30;
+    const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 8 + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.fontSize = (2 + Math.random() * 3) + 'rem';
+      container.appendChild(heart);
+    }
+  }
+
+  // Add celebrate animation style
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes celebrate {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.02) rotate(-1deg); }
+      50% { transform: scale(1.03) rotate(1deg); }
+      75% { transform: scale(1.02) rotate(1deg); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Run floating hearts on page load
+  window.addEventListener('load', createHearts);
+</script>
+
 </body>
 </html>
