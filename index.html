@@ -23,6 +23,32 @@
       transition: background 0.5s ease;
     }
 
+    .apology {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 192, 203, 0.4);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 5px 30px rgba(255, 182, 193, 0.3);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .apology h2 {
+      color: #fff0f5;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 1px 1px 4px rgba(255, 105, 180, 0.4);
+    }
+
+    .apology p {
+      font-size: 1.2rem;
+      color: #ffe4e1;
+      line-height: 1.7;
+    }
+
     .love-note {
       background-color: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
@@ -177,6 +203,16 @@
   </style>
 </head>
 <body>
+
+  <div class="apology">
+    <h2>I'm Sorry, My Love 💔</h2>
+    <p>
+      I know I didn’t take GF day  seriously, even after you told me not to .<br>
+      That was wrong of me, and I’m truly sorry. You deserve more than that.<br>
+      Please forgive me for making you feel unseen when you should’ve felt celebrated.
+    </p>
+  </div>
+
   <div class="love-note">
     <h1>To the shiniest forehead that brightens up my day every day</h1>
     <p>
@@ -205,103 +241,100 @@
 
   <a href="gallery.html" class="gallery-button">View Our Gallery <span class="heart-beat">💕</span></a>
 
- <script>
-  function handleNo() {
-    const noBtn = document.getElementById('noButton');
-    const response = document.getElementById('responseMessage');
+  <script>
+    function handleNo() {
+      const noBtn = document.getElementById('noButton');
+      const response = document.getElementById('responseMessage');
 
-    // Darken the background
-    document.body.style.background = '#2c003e';
+      document.body.style.background = '#2c003e';
+      noBtn.style.transform = 'scale(0)';
+      noBtn.style.opacity = '0';
+      setTimeout(() => noBtn.remove(), 500);
 
-    // Button disappears
-    noBtn.style.transform = 'scale(0)';
-    noBtn.style.opacity = '0';
-    setTimeout(() => noBtn.remove(), 500);
+      response.innerHTML = `
+        <div class="animation-message">
+          wa tsenwa choose another one
+          <div class="sad-face">💔😤</div>
+        </div>
+      `;
 
-    // Show custom message
-    response.innerHTML = `
-      <div class="animation-message">
-        wa tsenwa choose another one
-        <div class="sad-face">💔😤</div>
-      </div>
+      document.querySelector('.yes-btn').style.transform = 'scale(1.2)';
+      document.querySelector('.yes-btn').style.boxShadow = '0 0 20px rgba(255,105,180,0.8)';
+    }
+
+    function handleYes() {
+      const response = document.getElementById('responseMessage');
+
+      response.innerHTML = `
+        <div class="animation-message">
+          Thank you Princesss I love you soooo much more 💖
+          <div class="happy-animation">💖🎉✨</div>
+        </div>
+      `;
+
+      createConfetti();
+      document.body.style.animation = 'celebrate 0.5s ease';
+      setTimeout(() => document.body.style.animation = '', 500);
+    }
+
+    function createConfetti() {
+      const colors = ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff', '#ff8c00', '#ffd700'];
+
+      for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = (10 + Math.random() * 15) + 'px';
+          confetti.style.height = (10 + Math.random() * 15) + 'px';
+          confetti.style.position = 'absolute';
+          confetti.style.top = '-20px';
+          confetti.style.animation = 'fall ' + (2 + Math.random() * 3) + 's linear forwards';
+          document.body.appendChild(confetti);
+
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 30);
+      }
+    }
+
+    function createHearts() {
+      const container = document.getElementById('hearts-container');
+      const heartCount = 30;
+      const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 4 + Math.random() * 8 + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.fontSize = (2 + Math.random() * 3) + 'rem';
+        container.appendChild(heart);
+      }
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes celebrate {
+        0%, 100% { transform: scale(1); }
+        25% { transform: scale(1.02) rotate(-1deg); }
+        50% { transform: scale(1.03) rotate(1deg); }
+        75% { transform: scale(1.02) rotate(1deg); }
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
     `;
+    document.head.appendChild(style);
 
-    // Make the yes button more eye-catching
-    document.querySelector('.yes-btn').style.transform = 'scale(1.2)';
-    document.querySelector('.yes-btn').style.boxShadow = '0 0 20px rgba(255,105,180,0.8)';
-  }
-
-  function handleYes() {
-    const response = document.getElementById('responseMessage');
-
-    // Show custom thank-you message
-    response.innerHTML = `
-      <div class="animation-message">
-        Thank you Princesss I love you soooo much more 💖
-        <div class="happy-animation">💖🎉✨</div>
-      </div>
-    `;
-
-    // Trigger confetti animation
-    createConfetti();
-
-    // Page celebration animation
-    document.body.style.animation = 'celebrate 0.5s ease';
-    setTimeout(() => document.body.style.animation = '', 500);
-  }
-
-  function createConfetti() {
-    const colors = ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff', '#ff8c00', '#ffd700'];
-
-    for (let i = 0; i < 100; i++) {
-      setTimeout(() => {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = (10 + Math.random() * 15) + 'px';
-        confetti.style.height = (10 + Math.random() * 15) + 'px';
-        confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
-        confetti.style.animationDelay = Math.random() * 1 + 's';
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 3000);
-      }, i * 30);
-    }
-  }
-
-  function createHearts() {
-    const container = document.getElementById('hearts-container');
-    const heartCount = 30;
-    const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
-
-    for (let i = 0; i < heartCount; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = 4 + Math.random() * 8 + 's';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.style.fontSize = (2 + Math.random() * 3) + 'rem';
-      container.appendChild(heart);
-    }
-  }
-
-  // Add celebrate animation style
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes celebrate {
-      0%, 100% { transform: scale(1); }
-      25% { transform: scale(1.02) rotate(-1deg); }
-      50% { transform: scale(1.03) rotate(1deg); }
-      75% { transform: scale(1.02) rotate(1deg); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Run floating hearts on page load
-  window.addEventListener('load', createHearts);
-</script>
-
+    window.addEventListener('load', createHearts);
+  </script>
 </body>
 </html>
+
