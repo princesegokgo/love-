@@ -18,6 +18,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 2rem;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -26,27 +27,66 @@
       color: #fffaf0;
       margin-bottom: 2rem;
       text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5);
+      text-align: center;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
       width: 100%;
-      max-width: 1000px;
+      max-width: 1200px;
+      padding: 20px;
     }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
+    .gallery-item {
+      position: relative;
       border-radius: 16px;
+      overflow: hidden;
       box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s ease;
+      aspect-ratio: 1/1;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 30px rgba(255, 20, 147, 0.6);
+    .gallery-item:nth-child(3n+1) {
+      aspect-ratio: 4/5;
+    }
+
+    .gallery-item:nth-child(5n+2) {
+      aspect-ratio: 16/9;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 12px 30px rgba(255, 20, 147, 0.7);
+      z-index: 10;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(199, 21, 133, 0.3), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
     }
 
     .back-button {
@@ -60,24 +100,76 @@
       text-decoration: none;
       font-size: 1rem;
       box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .back-button:hover {
       background-color: #ffe4e1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+    }
+
+    .back-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .back-button:hover::before {
+      left: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Moments of Us 💞</h1>
   <div class="gallery">
-    <!-- Replace these image URLs with your own -->
-    <img src="https://i.pinimg.com/736x/33/e7/94/33e794a5a7f64a6baab85fbf50fd51ca.jpg" alt="Love Memory 1">
-    <img src="https://i.pinimg.com/736x/76/45/5f/76455f5229f6ef915f22cc847f8fb7fd.jpg" alt="Love Memory 2">
-    <img src="https://i.pinimg.com/736x/23/5d/98/235d9832f78616cbcfc114ee3097a0bb.jpg" alt="Love Memory 3">
-    <img src="https://i.pinimg.com/736x/0c/0c/7b/0c0c7bd8ff67f9849223c8447afee78e.jpg" alt="Love Memory 4">
-    <img src="https://i.pinimg.com/736x/cd/e0/b0/cde0b0508f5a573cb4e6f2d7679637d7.jpg" alt="Love Memory 5">
-    <img src="https://i.pinimg.com/736x/2a/a8/fb/2aa8fba0f80c92fd5c054845ea644a68.jpg" alt="Love Memory 6">
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/33/e7/94/33e794a5a7f64a6baab85fbf50fd51ca.jpg" alt="Love Memory 1">
+    </div>
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/76/45/5f/76455f5229f6ef915f22cc847f8fb7fd.jpg" alt="Love Memory 2">
+    </div>
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/23/5d/98/235d9832f78616cbcfc114ee3097a0bb.jpg" alt="Love Memory 3">
+    </div>
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/0c/0c/7b/0c0c7bd8ff67f9849223c8447afee78e.jpg" alt="Love Memory 4">
+    </div>
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/cd/e0/b0/cde0b0508f5a573cb4e6f2d7679637d7.jpg" alt="Love Memory 5">
+    </div>
+    <div class="gallery-item">
+      <img src="https://i.pinimg.com/736x/2a/a8/fb/2aa8fba0f80c92fd5c054845ea644a68.jpg" alt="Love Memory 6">
+    </div>
   </div>
 
   <a href="index.html" class="back-button">← Back to Love Letter</a>
